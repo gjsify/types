@@ -3494,7 +3494,7 @@ function cairo_region_create_from_surface(surface: cairo.Surface): cairo.Region
 function cairo_set_source_pixbuf(cr: cairo.Context, pixbuf: GdkPixbuf.Pixbuf, pixbuf_x: number, pixbuf_y: number): void
 function cairo_set_source_rgba(cr: cairo.Context, rgba: RGBA): void
 function content_deserialize_async(stream: Gio.InputStream, mime_type: string, type: GObject.Type, io_priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-function content_deserialize_finish(result: Gio.AsyncResult, value: any): boolean
+function content_deserialize_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* value */ any ]
 function content_formats_parse(string: string): ContentFormats | null
 function content_register_deserializer(mime_type: string, type: GObject.Type, deserialize: ContentDeserializeFunc): void
 function content_register_serializer(type: GObject.Type, mime_type: string, serialize: ContentSerializeFunc): void
