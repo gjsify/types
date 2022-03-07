@@ -196,6 +196,8 @@ const MIN_LATITUDE: number
  */
 const MIN_LONGITUDE: number
 function fileCacheErrorQuark(): GLib.Quark
+function getUserAgent(): string
+function setUserAgent(newUserAgent?: string | null): void
 function styleErrorQuark(): GLib.Quark
 function tileDownloaderErrorQuark(): GLib.Quark
 class Location {

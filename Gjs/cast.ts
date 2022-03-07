@@ -26076,10 +26076,6 @@ const inheritanceTable: { [key: string]: string[] } = {
     'Qmi.Client': [
     'GObject.Object',
 ],
-    'Qmi.ClientCtl': [
-    'Qmi.Client',
-    'GObject.Object',
-],
     'Qmi.ClientDms': [
     'Qmi.Client',
     'GObject.Object',
@@ -26089,6 +26085,10 @@ const inheritanceTable: { [key: string]: string[] } = {
     'GObject.Object',
 ],
     'Qmi.ClientDsd': [
+    'Qmi.Client',
+    'GObject.Object',
+],
+    'Qmi.ClientFox': [
     'Qmi.Client',
     'GObject.Object',
 ],

@@ -309,6 +309,12 @@ class User {
      * Note this function is synchronous and ignores errors.
      */
     set_password(password: string, hint: string): void
+    /**
+     * Set the password expiration policy for a user.
+     * 
+     * Note this function is synchronous and ignores errors.
+     */
+    set_password_expiration_policy(min_days_between_changes: number, max_days_between_changes: number, days_to_warn: number, days_after_expiration_until_lock: number): void
     set_password_hint(hint: string): void
     /**
      * Changes the password of `user`.  If `password_mode` is
@@ -338,6 +344,12 @@ class User {
      * Note this function is synchronous and ignores errors.
      */
     set_session_type(session_type: string): void
+    /**
+     * Set the user expiration policy for a user.
+     * 
+     * Note this function is synchronous and ignores errors.
+     */
+    set_user_expiration_policy(expiration_time: number): void
     /**
      * Assigns a new username for `user`.
      * 

@@ -1801,7 +1801,9 @@ enum BufferFlags {
     /**
      * the buffer contains a media specific marker. for
      *                                 video this is the end of a frame boundary, for audio
-     *                                 this is the start of a talkspurt.
+     *                                 this is the start of a talkspurt. for RTP
+     *                                 packets this matches the marker flag in the
+     *                                 RTP packet header.
      */
     MARKER,
     /**

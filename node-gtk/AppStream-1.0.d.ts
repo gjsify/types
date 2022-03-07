@@ -126,10 +126,6 @@ enum ColorKind {
      * Primary accent color
      */
     PRIMARY,
-    /**
-     * Text color that goes with the primary accent color.
-     */
-    PRIMARY_TEXT,
 }
 /**
  * A color scheme type.

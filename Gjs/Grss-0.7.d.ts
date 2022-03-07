@@ -1834,7 +1834,7 @@ class FeedItem {
     /**
      * Retrieves the geo reference of the `item`.
      */
-    get_geo_point(latitude: number, longitude: number): boolean
+    get_geo_point(): [ /* returnType */ boolean, /* latitude */ number, /* longitude */ number ]
     /**
      * Retrieves the ID assigned to the `item`. If no ID was set with
      * grss_feed_item_set_id() this returns the same of grss_feed_item_get_source().

@@ -2469,6 +2469,14 @@ enum CheckpointCreateFlags {
      *   of an older checkpoint. Since: 1.12.
      */
     ALLOW_OVERLAPPING,
+    /**
+     * during rollback,
+     *   by default externally added ports attached to bridge devices are preserved.
+     *   With this flag, the rollback detaches all external ports.
+     *   This only has an effect for bridge ports. Before 1.38, this was the default
+     *   behavior. Since: 1.38.
+     */
+    NO_PRESERVE_EXTERNAL_PORTS,
 }
 enum ClientInstanceFlags {
     /**

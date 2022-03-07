@@ -696,6 +696,23 @@ enum Endian {
     BIG,
 }
 /**
+ * Foxconn specific firmware version types.
+ */
+enum FoxFirmwareVersionType {
+    /**
+     * E.g. T99W265.F0.0.0.0.1.GC.004.
+     */
+    FIRMWARE_MCFG,
+    /**
+     * E.g. T99W265.F0.0.0.0.1.GC.004.001.
+     */
+    FIRMWARE_MCFG_APPS,
+    /**
+     * E.g. 001.
+     */
+    APPS,
+}
+/**
  * Mode when retrieving a list of stored firmwares.
  */
 enum GasFirmwareListingMode {
@@ -4215,6 +4232,10 @@ enum Service {
      * Open Mobile Alliance device management service.
      */
     OMA,
+    /**
+     * Foxconn General Modem Service. Since: 1.32.
+     */
+    FOX,
     /**
      * Firmware Over The Air service. Since: 1.24.
      */
@@ -11506,9 +11527,6 @@ const PROXY_SOCKET_PATH: string
 const WDS_RATE_UNAVAILABLE: number
 function core_error_get_string(val: CoreError): string
 function core_error_quark(): GLib.Quark
-function ctl_data_format_get_string(val: CtlDataFormat): string
-function ctl_data_link_protocol_get_string(val: CtlDataLinkProtocol): string
-function ctl_flag_build_string_from_mask(mask: CtlFlag): string
 function data_endpoint_type_get_string(val: DataEndpointType): string
 function device_add_link_flags_build_string_from_mask(mask: DeviceAddLinkFlags): string
 function device_expected_data_format_get_string(val: DeviceExpectedDataFormat): string
@@ -11541,6 +11559,7 @@ function dms_uim_state_get_string(val: DmsUimState): string
 function dsd_apn_type_get_string(val: DsdApnType): string
 function dsd_apn_type_preference_build_string_from_mask(mask: DsdApnTypePreference): string
 function endian_get_string(val: Endian): string
+function fox_firmware_version_type_get_string(val: FoxFirmwareVersionType): string
 function gas_firmware_listing_mode_get_string(val: GasFirmwareListingMode): string
 function gas_usb_composition_endpoint_type_get_string(val: GasUsbCompositionEndpointType): string
 function loc_delete_cell_database_build_string_from_mask(mask: LocDeleteCellDatabase): string
@@ -11705,7 +11724,6 @@ function protocol_error_quark(): GLib.Quark
 function qos_event_get_string(val: QosEvent): string
 function qos_status_get_string(val: QosStatus): string
 function sar_rf_state_get_string(val: SarRfState): string
-function service_flag_build_string_from_mask(mask: ServiceFlag): string
 function service_get_string(val: Service): string
 function sio_port_get_string(val: SioPort): string
 function uim_card_application_personalization_feature_get_string(val: UimCardApplicationPersonalizationFeature): string
@@ -12264,518 +12282,6 @@ class Client {
     static name: string
     constructor (config?: Client_ConstructProps)
     _init (config?: Client_ConstructProps): void
-    static $gtype: GObject.Type
-}
-interface ClientCtl_ConstructProps extends Client_ConstructProps {
-}
-class ClientCtl {
-    /* Properties of Qmi-1.0.Qmi.Client */
-    client_cid: number
-    client_device: Device
-    client_service: Service
-    readonly client_valid: boolean
-    client_version_major: number
-    client_version_minor: number
-    /* Fields of GObject-2.0.GObject.Object */
-    readonly g_type_instance: GObject.TypeInstance
-    /* Methods of Qmi-1.0.Qmi.ClientCtl */
-    /**
-     * Asynchronously sends a Allocate CID request to the device.
-     * 
-     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-     * 
-     * You can then call qmi_client_ctl_allocate_cid_finish() to get the result of the operation.
-     */
-    allocate_cid(input: MessageCtlAllocateCidInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an async operation started with qmi_client_ctl_allocate_cid().
-     */
-    allocate_cid_finish(res: Gio.AsyncResult): MessageCtlAllocateCidOutput
-    /**
-     * Asynchronously sends a Get Version Info request to the device.
-     * 
-     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-     * 
-     * You can then call qmi_client_ctl_get_version_info_finish() to get the result of the operation.
-     */
-    get_version_info(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an async operation started with qmi_client_ctl_get_version_info().
-     */
-    get_version_info_finish(res: Gio.AsyncResult): MessageCtlGetVersionInfoOutput
-    /**
-     * Asynchronously sends a Internal Proxy Open request to the device.
-     * 
-     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-     * 
-     * You can then call qmi_client_ctl_internal_proxy_open_finish() to get the result of the operation.
-     */
-    internal_proxy_open(input: MessageCtlInternalProxyOpenInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an async operation started with qmi_client_ctl_internal_proxy_open().
-     */
-    internal_proxy_open_finish(res: Gio.AsyncResult): MessageCtlInternalProxyOpenOutput
-    /**
-     * Asynchronously sends a Release CID request to the device.
-     * 
-     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-     * 
-     * You can then call qmi_client_ctl_release_cid_finish() to get the result of the operation.
-     */
-    release_cid(input: MessageCtlReleaseCidInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an async operation started with qmi_client_ctl_release_cid().
-     */
-    release_cid_finish(res: Gio.AsyncResult): MessageCtlReleaseCidOutput
-    /**
-     * Asynchronously sends a Set Data Format request to the device.
-     * 
-     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-     * 
-     * You can then call qmi_client_ctl_set_data_format_finish() to get the result of the operation.
-     */
-    set_data_format(input: MessageCtlSetDataFormatInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an async operation started with qmi_client_ctl_set_data_format().
-     */
-    set_data_format_finish(res: Gio.AsyncResult): MessageCtlSetDataFormatOutput
-    /**
-     * Asynchronously sends a Set Instance ID request to the device.
-     * 
-     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-     * 
-     * You can then call qmi_client_ctl_set_instance_id_finish() to get the result of the operation.
-     */
-    set_instance_id(input: MessageCtlSetInstanceIdInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an async operation started with qmi_client_ctl_set_instance_id().
-     */
-    set_instance_id_finish(res: Gio.AsyncResult): MessageCtlSetInstanceIdOutput
-    /**
-     * Asynchronously sends a Sync request to the device.
-     * 
-     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
-     * 
-     * You can then call qmi_client_ctl_sync_finish() to get the result of the operation.
-     */
-    sync(unused: object | null, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
-    /**
-     * Finishes an async operation started with qmi_client_ctl_sync().
-     */
-    sync_finish(res: Gio.AsyncResult): MessageCtlSyncOutput
-    /* Methods of Qmi-1.0.Qmi.Client */
-    /**
-     * Checks if the version of the service handled by this #QmiClient is greater
-     * or equal than the given version.
-     */
-    check_version(major: number, minor: number): boolean
-    /**
-     * Get the client ID of this #QmiClient.
-     */
-    get_cid(): number
-    /**
-     * Get the #QmiDevice associated with this #QmiClient.
-     */
-    get_device(): GObject.Object
-    /**
-     * Acquire the next transaction ID of this #QmiClient.
-     * The internal transaction ID gets incremented.
-     */
-    get_next_transaction_id(): number
-    /**
-     * Get the service being used by this #QmiClient.
-     */
-    get_service(): Service
-    /**
-     * Get the version of the service handled by this #QmiClient.
-     */
-    get_version(major: number, minor: number): boolean
-    /**
-     * Checks whether #QmiClient is a valid and usable client.
-     * 
-     * The client is marked as invalid as soon as the client id is released or when
-     * the associated #QmiDevice is closed.
-     * 
-     * This method may be used if the caller needs to ensure validity before a
-     * command is attempted, e.g. if the lifecycle of the object is managed in some
-     * other place and the caller just has a reference to the #QmiClient.
-     */
-    is_valid(): boolean
-    /**
-     * Get the #QmiDevice associated with this #QmiClient, without increasing the reference count
-     * on the returned object.
-     */
-    peek_device(): GObject.Object
-    /* Methods of GObject-2.0.GObject.Object */
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target`.
-     * 
-     * Whenever the `source_property` is changed the `target_property` is
-     * updated using the same value. For instance:
-     * 
-     * 
-     * ```c
-     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-     * ```
-     * 
-     * 
-     * Will result in the "sensitive" property of the widget #GObject instance to be
-     * updated with the same value of the "active" property of the action #GObject
-     * instance.
-     * 
-     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-     * if `target_property` on `target` changes then the `source_property` on `source`
-     * will be updated as well.
-     * 
-     * The binding will automatically be removed when either the `source` or the
-     * `target` instances are finalized. To remove the binding without affecting the
-     * `source` and the `target` you can just call g_object_unref() on the returned
-     * #GBinding instance.
-     * 
-     * Removing the binding by calling g_object_unref() on it must only be done if
-     * the binding, `source` and `target` are only used from a single thread and it
-     * is clear that both `source` and `target` outlive the binding. Especially it
-     * is not safe to rely on this if the binding, `source` or `target` can be
-     * finalized from different threads. Keep another reference to the binding and
-     * use g_binding_unbind() instead to be on the safe side.
-     * 
-     * A #GObject can have multiple bindings.
-     */
-    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
-    /**
-     * Creates a binding between `source_property` on `source` and `target_property`
-     * on `target,` allowing you to set the transformation functions to be used by
-     * the binding.
-     * 
-     * This function is the language bindings friendly version of
-     * g_object_bind_property_full(), using #GClosures instead of
-     * function pointers.
-     */
-    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
-    /**
-     * This function is intended for #GObject implementations to re-enforce
-     * a [floating][floating-ref] object reference. Doing this is seldom
-     * required: all #GInitiallyUnowneds are created with a floating reference
-     * which usually just needs to be sunken by calling g_object_ref_sink().
-     */
-    force_floating(): void
-    /**
-     * Increases the freeze count on `object`. If the freeze count is
-     * non-zero, the emission of "notify" signals on `object` is
-     * stopped. The signals are queued until the freeze count is decreased
-     * to zero. Duplicate notifications are squashed so that at most one
-     * #GObject::notify signal is emitted for each property modified while the
-     * object is frozen.
-     * 
-     * This is necessary for accessors that modify multiple properties to prevent
-     * premature notification while the object is still being modified.
-     */
-    freeze_notify(): void
-    /**
-     * Gets a named field from the objects table of associations (see g_object_set_data()).
-     */
-    get_data(key: string): object | null
-    /**
-     * Gets a property of an object.
-     * 
-     * The `value` can be:
-     * 
-     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
-     *    automatically initialized with the expected type of the property
-     *    (since GLib 2.60)
-     *  - a #GValue initialized with the expected type of the property
-     *  - a #GValue initialized with a type to which the expected type
-     *    of the property can be transformed
-     * 
-     * In general, a copy is made of the property contents and the caller is
-     * responsible for freeing the memory by calling g_value_unset().
-     * 
-     * Note that g_object_get_property() is really intended for language
-     * bindings, g_object_get() is much more convenient for C programming.
-     */
-    get_property(property_name: string, value: any): void
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata().
-     */
-    get_qdata(quark: GLib.Quark): object | null
-    /**
-     * Gets `n_properties` properties for an `object`.
-     * Obtained properties will be set to `values`. All properties must be valid.
-     * Warnings will be emitted and undefined behaviour may result if invalid
-     * properties are passed in.
-     */
-    getv(names: string[], values: any[]): void
-    /**
-     * Checks whether `object` has a [floating][floating-ref] reference.
-     */
-    is_floating(): boolean
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     */
-    notify(property_name: string): void
-    /**
-     * Emits a "notify" signal for the property specified by `pspec` on `object`.
-     * 
-     * This function omits the property name lookup, hence it is faster than
-     * g_object_notify().
-     * 
-     * One way to avoid using g_object_notify() from within the
-     * class that registered the properties, and using g_object_notify_by_pspec()
-     * instead, is to store the GParamSpec used with
-     * g_object_class_install_property() inside a static array, e.g.:
-     * 
-     * 
-     * ```c
-     *   enum
-     *   {
-     *     PROP_0,
-     *     PROP_FOO,
-     *     PROP_LAST
-     *   };
-     * 
-     *   static GParamSpec *properties[PROP_LAST];
-     * 
-     *   static void
-     *   my_object_class_init (MyObjectClass *klass)
-     *   {
-     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
-     *                                              0, 100,
-     *                                              50,
-     *                                              G_PARAM_READWRITE);
-     *     g_object_class_install_property (gobject_class,
-     *                                      PROP_FOO,
-     *                                      properties[PROP_FOO]);
-     *   }
-     * ```
-     * 
-     * 
-     * and then notify a change on the "foo" property with:
-     * 
-     * 
-     * ```c
-     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-     * ```
-     * 
-     */
-    notify_by_pspec(pspec: GObject.ParamSpec): void
-    /**
-     * Increases the reference count of `object`.
-     * 
-     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-     * of `object` will be propagated to the return type (using the GCC typeof()
-     * extension), so any casting the caller needs to do on the return type must be
-     * explicit.
-     */
-    ref(): GObject.Object
-    /**
-     * Increase the reference count of `object,` and possibly remove the
-     * [floating][floating-ref] reference, if `object` has a floating reference.
-     * 
-     * In other words, if the object is floating, then this call "assumes
-     * ownership" of the floating reference, converting it to a normal
-     * reference by clearing the floating flag while leaving the reference
-     * count unchanged.  If the object is not floating, then this call
-     * adds a new normal reference increasing the reference count by one.
-     * 
-     * Since GLib 2.56, the type of `object` will be propagated to the return type
-     * under the same conditions as for g_object_ref().
-     */
-    ref_sink(): GObject.Object
-    /**
-     * Releases all references to other objects. This can be used to break
-     * reference cycles.
-     * 
-     * This function should only be called from object system implementations.
-     */
-    run_dispose(): void
-    /**
-     * Each object carries around a table of associations from
-     * strings to pointers.  This function lets you set an association.
-     * 
-     * If the object already had an association with that name,
-     * the old association will be destroyed.
-     * 
-     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-     * This means a copy of `key` is kept permanently (even after `object` has been
-     * finalized) — so it is recommended to only use a small, bounded set of values
-     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-     */
-    set_data(key: string, data?: object | null): void
-    /**
-     * Sets a property on an object.
-     */
-    set_property(property_name: string, value: any): void
-    /**
-     * Remove a specified datum from the object's data associations,
-     * without invoking the association's destroy handler.
-     */
-    steal_data(key: string): object | null
-    /**
-     * This function gets back user data pointers stored via
-     * g_object_set_qdata() and removes the `data` from object
-     * without invoking its destroy() function (if any was
-     * set).
-     * Usually, calling this function is only required to update
-     * user data pointers with a destroy notifier, for example:
-     * 
-     * ```c
-     * void
-     * object_add_to_user_list (GObject     *object,
-     *                          const gchar *new_string)
-     * {
-     *   // the quark, naming the object data
-     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-     *   // retrieve the old string list
-     *   GList *list = g_object_steal_qdata (object, quark_string_list);
-     * 
-     *   // prepend new string
-     *   list = g_list_prepend (list, g_strdup (new_string));
-     *   // this changed 'list', so we need to set it again
-     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-     * }
-     * static void
-     * free_string_list (gpointer data)
-     * {
-     *   GList *node, *list = data;
-     * 
-     *   for (node = list; node; node = node->next)
-     *     g_free (node->data);
-     *   g_list_free (list);
-     * }
-     * ```
-     * 
-     * Using g_object_get_qdata() in the above example, instead of
-     * g_object_steal_qdata() would have left the destroy function set,
-     * and thus the partial string list would have been freed upon
-     * g_object_set_qdata_full().
-     */
-    steal_qdata(quark: GLib.Quark): object | null
-    /**
-     * Reverts the effect of a previous call to
-     * g_object_freeze_notify(). The freeze count is decreased on `object`
-     * and when it reaches zero, queued "notify" signals are emitted.
-     * 
-     * Duplicate notifications for each property are squashed so that at most one
-     * #GObject::notify signal is emitted for each property, in the reverse order
-     * in which they have been queued.
-     * 
-     * It is an error to call this function when the freeze count is zero.
-     */
-    thaw_notify(): void
-    /**
-     * Decreases the reference count of `object`. When its reference count
-     * drops to 0, the object is finalized (i.e. its memory is freed).
-     * 
-     * If the pointer to the #GObject may be reused in future (for example, if it is
-     * an instance variable of another object), it is recommended to clear the
-     * pointer to %NULL rather than retain a dangling pointer to a potentially
-     * invalid #GObject instance. Use g_clear_object() for this.
-     */
-    unref(): void
-    /**
-     * This function essentially limits the life time of the `closure` to
-     * the life time of the object. That is, when the object is finalized,
-     * the `closure` is invalidated by calling g_closure_invalidate() on
-     * it, in order to prevent invocations of the closure with a finalized
-     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-     * added as marshal guards to the `closure,` to ensure that an extra
-     * reference count is held on `object` during invocation of the
-     * `closure`.  Usually, this function will be called on closures that
-     * use this `object` as closure data.
-     */
-    watch_closure(closure: Function): void
-    /* Virtual methods of Qmi-1.0.Qmi.Client */
-    vfunc_process_indication(message: Message): void
-    /* Virtual methods of GObject-2.0.GObject.Object */
-    vfunc_constructed(): void
-    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
-    vfunc_dispose(): void
-    vfunc_finalize(): void
-    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /**
-     * Emits a "notify" signal for the property `property_name` on `object`.
-     * 
-     * When possible, eg. when signaling a property change from within the class
-     * that registered the property, you should use g_object_notify_by_pspec()
-     * instead.
-     * 
-     * Note that emission of the notify signal may be blocked with
-     * g_object_freeze_notify(). In this case, the signal emissions are queued
-     * and will be emitted (in reverse order) when g_object_thaw_notify() is
-     * called.
-     */
-    vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
-    /* Signals of Qmi-1.0.Qmi.ClientCtl */
-    /**
-     * The ::sync signal gets emitted when a 'Sync' indication is received.
-     */
-    connect(sigName: "sync", callback: (($obj: ClientCtl) => void)): number
-    connect_after(sigName: "sync", callback: (($obj: ClientCtl) => void)): number
-    emit(sigName: "sync"): void
-    /* Signals of GObject-2.0.GObject.Object */
-    /**
-     * The notify signal is emitted on an object when one of its properties has
-     * its value set through g_object_set_property(), g_object_set(), et al.
-     * 
-     * Note that getting this signal doesn’t itself guarantee that the value of
-     * the property has actually changed. When it is emitted is determined by the
-     * derived GObject class. If the implementor did not create the property with
-     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
-     * in ::notify being emitted, even if the new value is the same as the old.
-     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
-     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
-     * and common practice is to do that only when the value has actually changed.
-     * 
-     * This signal is typically used to obtain change notification for a
-     * single property, by specifying the property name as a detail in the
-     * g_signal_connect() call, like this:
-     * 
-     * 
-     * ```c
-     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
-     *                   G_CALLBACK (gtk_text_view_target_list_notify),
-     *                   text_view)
-     * ```
-     * 
-     * 
-     * It is important to note that you must use
-     * [canonical parameter names][canonical-parameter-names] as
-     * detail strings for the notify signal.
-     */
-    connect(sigName: "notify", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    emit(sigName: "notify", pspec: GObject.ParamSpec): void
-    connect(sigName: "notify::client-cid", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client-cid", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: "notify::client-device", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client-device", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: "notify::client-service", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client-service", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: "notify::client-valid", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client-valid", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: "notify::client-version-major", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client-version-major", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: "notify::client-version-minor", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect_after(sigName: "notify::client-version-minor", callback: (($obj: ClientCtl, pspec: GObject.ParamSpec) => void)): number
-    connect(sigName: string, callback: any): number
-    connect_after(sigName: string, callback: any): number
-    emit(sigName: string, ...args: any[]): void
-    disconnect(id: number): void
-    static name: string
-    constructor (config?: ClientCtl_ConstructProps)
-    _init (config?: ClientCtl_ConstructProps): void
     static $gtype: GObject.Type
 }
 interface ClientDms_ConstructProps extends Client_ConstructProps {
@@ -14826,6 +14332,439 @@ class ClientDsd {
     static name: string
     constructor (config?: ClientDsd_ConstructProps)
     _init (config?: ClientDsd_ConstructProps): void
+    static $gtype: GObject.Type
+}
+interface ClientFox_ConstructProps extends Client_ConstructProps {
+}
+class ClientFox {
+    /* Properties of Qmi-1.0.Qmi.Client */
+    client_cid: number
+    client_device: Device
+    client_service: Service
+    readonly client_valid: boolean
+    client_version_major: number
+    client_version_minor: number
+    /* Fields of GObject-2.0.GObject.Object */
+    readonly g_type_instance: GObject.TypeInstance
+    /* Methods of Qmi-1.0.Qmi.ClientFox */
+    /**
+     * Asynchronously sends a Get Firmware Version request to the device.
+     * 
+     * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from.
+     * 
+     * You can then call qmi_client_fox_get_firmware_version_finish() to get the result of the operation.
+     */
+    get_firmware_version(input: MessageFoxGetFirmwareVersionInput, timeout: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    /**
+     * Finishes an async operation started with qmi_client_fox_get_firmware_version().
+     */
+    get_firmware_version_finish(res: Gio.AsyncResult): MessageFoxGetFirmwareVersionOutput
+    /* Methods of Qmi-1.0.Qmi.Client */
+    /**
+     * Checks if the version of the service handled by this #QmiClient is greater
+     * or equal than the given version.
+     */
+    check_version(major: number, minor: number): boolean
+    /**
+     * Get the client ID of this #QmiClient.
+     */
+    get_cid(): number
+    /**
+     * Get the #QmiDevice associated with this #QmiClient.
+     */
+    get_device(): GObject.Object
+    /**
+     * Acquire the next transaction ID of this #QmiClient.
+     * The internal transaction ID gets incremented.
+     */
+    get_next_transaction_id(): number
+    /**
+     * Get the service being used by this #QmiClient.
+     */
+    get_service(): Service
+    /**
+     * Get the version of the service handled by this #QmiClient.
+     */
+    get_version(major: number, minor: number): boolean
+    /**
+     * Checks whether #QmiClient is a valid and usable client.
+     * 
+     * The client is marked as invalid as soon as the client id is released or when
+     * the associated #QmiDevice is closed.
+     * 
+     * This method may be used if the caller needs to ensure validity before a
+     * command is attempted, e.g. if the lifecycle of the object is managed in some
+     * other place and the caller just has a reference to the #QmiClient.
+     */
+    is_valid(): boolean
+    /**
+     * Get the #QmiDevice associated with this #QmiClient, without increasing the reference count
+     * on the returned object.
+     */
+    peek_device(): GObject.Object
+    /* Methods of GObject-2.0.GObject.Object */
+    /**
+     * Creates a binding between `source_property` on `source` and `target_property`
+     * on `target`.
+     * 
+     * Whenever the `source_property` is changed the `target_property` is
+     * updated using the same value. For instance:
+     * 
+     * 
+     * ```c
+     *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+     * ```
+     * 
+     * 
+     * Will result in the "sensitive" property of the widget #GObject instance to be
+     * updated with the same value of the "active" property of the action #GObject
+     * instance.
+     * 
+     * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+     * if `target_property` on `target` changes then the `source_property` on `source`
+     * will be updated as well.
+     * 
+     * The binding will automatically be removed when either the `source` or the
+     * `target` instances are finalized. To remove the binding without affecting the
+     * `source` and the `target` you can just call g_object_unref() on the returned
+     * #GBinding instance.
+     * 
+     * Removing the binding by calling g_object_unref() on it must only be done if
+     * the binding, `source` and `target` are only used from a single thread and it
+     * is clear that both `source` and `target` outlive the binding. Especially it
+     * is not safe to rely on this if the binding, `source` or `target` can be
+     * finalized from different threads. Keep another reference to the binding and
+     * use g_binding_unbind() instead to be on the safe side.
+     * 
+     * A #GObject can have multiple bindings.
+     */
+    bind_property(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): GObject.Binding
+    /**
+     * Creates a binding between `source_property` on `source` and `target_property`
+     * on `target,` allowing you to set the transformation functions to be used by
+     * the binding.
+     * 
+     * This function is the language bindings friendly version of
+     * g_object_bind_property_full(), using #GClosures instead of
+     * function pointers.
+     */
+    bind_property_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: Function, transform_from: Function): GObject.Binding
+    /**
+     * This function is intended for #GObject implementations to re-enforce
+     * a [floating][floating-ref] object reference. Doing this is seldom
+     * required: all #GInitiallyUnowneds are created with a floating reference
+     * which usually just needs to be sunken by calling g_object_ref_sink().
+     */
+    force_floating(): void
+    /**
+     * Increases the freeze count on `object`. If the freeze count is
+     * non-zero, the emission of "notify" signals on `object` is
+     * stopped. The signals are queued until the freeze count is decreased
+     * to zero. Duplicate notifications are squashed so that at most one
+     * #GObject::notify signal is emitted for each property modified while the
+     * object is frozen.
+     * 
+     * This is necessary for accessors that modify multiple properties to prevent
+     * premature notification while the object is still being modified.
+     */
+    freeze_notify(): void
+    /**
+     * Gets a named field from the objects table of associations (see g_object_set_data()).
+     */
+    get_data(key: string): object | null
+    /**
+     * Gets a property of an object.
+     * 
+     * The `value` can be:
+     * 
+     *  - an empty #GValue initialized by %G_VALUE_INIT, which will be
+     *    automatically initialized with the expected type of the property
+     *    (since GLib 2.60)
+     *  - a #GValue initialized with the expected type of the property
+     *  - a #GValue initialized with a type to which the expected type
+     *    of the property can be transformed
+     * 
+     * In general, a copy is made of the property contents and the caller is
+     * responsible for freeing the memory by calling g_value_unset().
+     * 
+     * Note that g_object_get_property() is really intended for language
+     * bindings, g_object_get() is much more convenient for C programming.
+     */
+    get_property(property_name: string, value: any): void
+    /**
+     * This function gets back user data pointers stored via
+     * g_object_set_qdata().
+     */
+    get_qdata(quark: GLib.Quark): object | null
+    /**
+     * Gets `n_properties` properties for an `object`.
+     * Obtained properties will be set to `values`. All properties must be valid.
+     * Warnings will be emitted and undefined behaviour may result if invalid
+     * properties are passed in.
+     */
+    getv(names: string[], values: any[]): void
+    /**
+     * Checks whether `object` has a [floating][floating-ref] reference.
+     */
+    is_floating(): boolean
+    /**
+     * Emits a "notify" signal for the property `property_name` on `object`.
+     * 
+     * When possible, eg. when signaling a property change from within the class
+     * that registered the property, you should use g_object_notify_by_pspec()
+     * instead.
+     * 
+     * Note that emission of the notify signal may be blocked with
+     * g_object_freeze_notify(). In this case, the signal emissions are queued
+     * and will be emitted (in reverse order) when g_object_thaw_notify() is
+     * called.
+     */
+    notify(property_name: string): void
+    /**
+     * Emits a "notify" signal for the property specified by `pspec` on `object`.
+     * 
+     * This function omits the property name lookup, hence it is faster than
+     * g_object_notify().
+     * 
+     * One way to avoid using g_object_notify() from within the
+     * class that registered the properties, and using g_object_notify_by_pspec()
+     * instead, is to store the GParamSpec used with
+     * g_object_class_install_property() inside a static array, e.g.:
+     * 
+     * 
+     * ```c
+     *   enum
+     *   {
+     *     PROP_0,
+     *     PROP_FOO,
+     *     PROP_LAST
+     *   };
+     * 
+     *   static GParamSpec *properties[PROP_LAST];
+     * 
+     *   static void
+     *   my_object_class_init (MyObjectClass *klass)
+     *   {
+     *     properties[PROP_FOO] = g_param_spec_int ("foo", "Foo", "The foo",
+     *                                              0, 100,
+     *                                              50,
+     *                                              G_PARAM_READWRITE);
+     *     g_object_class_install_property (gobject_class,
+     *                                      PROP_FOO,
+     *                                      properties[PROP_FOO]);
+     *   }
+     * ```
+     * 
+     * 
+     * and then notify a change on the "foo" property with:
+     * 
+     * 
+     * ```c
+     *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+     * ```
+     * 
+     */
+    notify_by_pspec(pspec: GObject.ParamSpec): void
+    /**
+     * Increases the reference count of `object`.
+     * 
+     * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+     * of `object` will be propagated to the return type (using the GCC typeof()
+     * extension), so any casting the caller needs to do on the return type must be
+     * explicit.
+     */
+    ref(): GObject.Object
+    /**
+     * Increase the reference count of `object,` and possibly remove the
+     * [floating][floating-ref] reference, if `object` has a floating reference.
+     * 
+     * In other words, if the object is floating, then this call "assumes
+     * ownership" of the floating reference, converting it to a normal
+     * reference by clearing the floating flag while leaving the reference
+     * count unchanged.  If the object is not floating, then this call
+     * adds a new normal reference increasing the reference count by one.
+     * 
+     * Since GLib 2.56, the type of `object` will be propagated to the return type
+     * under the same conditions as for g_object_ref().
+     */
+    ref_sink(): GObject.Object
+    /**
+     * Releases all references to other objects. This can be used to break
+     * reference cycles.
+     * 
+     * This function should only be called from object system implementations.
+     */
+    run_dispose(): void
+    /**
+     * Each object carries around a table of associations from
+     * strings to pointers.  This function lets you set an association.
+     * 
+     * If the object already had an association with that name,
+     * the old association will be destroyed.
+     * 
+     * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+     * This means a copy of `key` is kept permanently (even after `object` has been
+     * finalized) — so it is recommended to only use a small, bounded set of values
+     * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+     */
+    set_data(key: string, data?: object | null): void
+    /**
+     * Sets a property on an object.
+     */
+    set_property(property_name: string, value: any): void
+    /**
+     * Remove a specified datum from the object's data associations,
+     * without invoking the association's destroy handler.
+     */
+    steal_data(key: string): object | null
+    /**
+     * This function gets back user data pointers stored via
+     * g_object_set_qdata() and removes the `data` from object
+     * without invoking its destroy() function (if any was
+     * set).
+     * Usually, calling this function is only required to update
+     * user data pointers with a destroy notifier, for example:
+     * 
+     * ```c
+     * void
+     * object_add_to_user_list (GObject     *object,
+     *                          const gchar *new_string)
+     * {
+     *   // the quark, naming the object data
+     *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+     *   // retrieve the old string list
+     *   GList *list = g_object_steal_qdata (object, quark_string_list);
+     * 
+     *   // prepend new string
+     *   list = g_list_prepend (list, g_strdup (new_string));
+     *   // this changed 'list', so we need to set it again
+     *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+     * }
+     * static void
+     * free_string_list (gpointer data)
+     * {
+     *   GList *node, *list = data;
+     * 
+     *   for (node = list; node; node = node->next)
+     *     g_free (node->data);
+     *   g_list_free (list);
+     * }
+     * ```
+     * 
+     * Using g_object_get_qdata() in the above example, instead of
+     * g_object_steal_qdata() would have left the destroy function set,
+     * and thus the partial string list would have been freed upon
+     * g_object_set_qdata_full().
+     */
+    steal_qdata(quark: GLib.Quark): object | null
+    /**
+     * Reverts the effect of a previous call to
+     * g_object_freeze_notify(). The freeze count is decreased on `object`
+     * and when it reaches zero, queued "notify" signals are emitted.
+     * 
+     * Duplicate notifications for each property are squashed so that at most one
+     * #GObject::notify signal is emitted for each property, in the reverse order
+     * in which they have been queued.
+     * 
+     * It is an error to call this function when the freeze count is zero.
+     */
+    thaw_notify(): void
+    /**
+     * Decreases the reference count of `object`. When its reference count
+     * drops to 0, the object is finalized (i.e. its memory is freed).
+     * 
+     * If the pointer to the #GObject may be reused in future (for example, if it is
+     * an instance variable of another object), it is recommended to clear the
+     * pointer to %NULL rather than retain a dangling pointer to a potentially
+     * invalid #GObject instance. Use g_clear_object() for this.
+     */
+    unref(): void
+    /**
+     * This function essentially limits the life time of the `closure` to
+     * the life time of the object. That is, when the object is finalized,
+     * the `closure` is invalidated by calling g_closure_invalidate() on
+     * it, in order to prevent invocations of the closure with a finalized
+     * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
+     * added as marshal guards to the `closure,` to ensure that an extra
+     * reference count is held on `object` during invocation of the
+     * `closure`.  Usually, this function will be called on closures that
+     * use this `object` as closure data.
+     */
+    watch_closure(closure: Function): void
+    /* Virtual methods of Qmi-1.0.Qmi.Client */
+    vfunc_process_indication(message: Message): void
+    /* Virtual methods of GObject-2.0.GObject.Object */
+    vfunc_constructed(): void
+    vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void
+    vfunc_dispose(): void
+    vfunc_finalize(): void
+    vfunc_get_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
+    /**
+     * Emits a "notify" signal for the property `property_name` on `object`.
+     * 
+     * When possible, eg. when signaling a property change from within the class
+     * that registered the property, you should use g_object_notify_by_pspec()
+     * instead.
+     * 
+     * Note that emission of the notify signal may be blocked with
+     * g_object_freeze_notify(). In this case, the signal emissions are queued
+     * and will be emitted (in reverse order) when g_object_thaw_notify() is
+     * called.
+     */
+    vfunc_notify(pspec: GObject.ParamSpec): void
+    vfunc_set_property(property_id: number, value: any, pspec: GObject.ParamSpec): void
+    /* Signals of GObject-2.0.GObject.Object */
+    /**
+     * The notify signal is emitted on an object when one of its properties has
+     * its value set through g_object_set_property(), g_object_set(), et al.
+     * 
+     * Note that getting this signal doesn’t itself guarantee that the value of
+     * the property has actually changed. When it is emitted is determined by the
+     * derived GObject class. If the implementor did not create the property with
+     * %G_PARAM_EXPLICIT_NOTIFY, then any call to g_object_set_property() results
+     * in ::notify being emitted, even if the new value is the same as the old.
+     * If they did pass %G_PARAM_EXPLICIT_NOTIFY, then this signal is emitted only
+     * when they explicitly call g_object_notify() or g_object_notify_by_pspec(),
+     * and common practice is to do that only when the value has actually changed.
+     * 
+     * This signal is typically used to obtain change notification for a
+     * single property, by specifying the property name as a detail in the
+     * g_signal_connect() call, like this:
+     * 
+     * 
+     * ```c
+     * g_signal_connect (text_view->buffer, "notify::paste-target-list",
+     *                   G_CALLBACK (gtk_text_view_target_list_notify),
+     *                   text_view)
+     * ```
+     * 
+     * 
+     * It is important to note that you must use
+     * [canonical parameter names][canonical-parameter-names] as
+     * detail strings for the notify signal.
+     */
+    connect(sigName: "notify", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    emit(sigName: "notify", pspec: GObject.ParamSpec): void
+    connect(sigName: "notify::client-cid", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-cid", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client-device", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-device", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client-service", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-service", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client-valid", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-valid", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client-version-major", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-version-major", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: "notify::client-version-minor", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect_after(sigName: "notify::client-version-minor", callback: (($obj: ClientFox, pspec: GObject.ParamSpec) => void)): number
+    connect(sigName: string, callback: any): number
+    connect_after(sigName: string, callback: any): number
+    emit(sigName: string, ...args: any[]): void
+    disconnect(id: number): void
+    static name: string
+    constructor (config?: ClientFox_ConstructProps)
+    _init (config?: ClientFox_ConstructProps): void
     static $gtype: GObject.Type
 }
 interface ClientGas_ConstructProps extends Client_ConstructProps {
@@ -24712,9 +24651,6 @@ abstract class ClientClass {
     readonly process_indication: (self: Client, message: Message) => void
     static name: string
 }
-abstract class ClientCtlClass {
-    static name: string
-}
 abstract class ClientDmsClass {
     static name: string
 }
@@ -24722,6 +24658,9 @@ abstract class ClientDpmClass {
     static name: string
 }
 abstract class ClientDsdClass {
+    static name: string
+}
+abstract class ClientFoxClass {
     static name: string
 }
 abstract class ClientGasClass {
@@ -24770,18 +24709,6 @@ abstract class ClientWdsClass {
     static name: string
 }
 abstract class ClientWmsClass {
-    static name: string
-}
-class ConfigTypeAndId {
-    /* Fields of Qmi-1.0.Qmi.ConfigTypeAndId */
-    /**
-     * a #QmiPdcConfigurationType.
-     */
-    readonly config_type: PdcConfigurationType
-    /**
-     * a #GArray of #guint8 elements.
-     */
-    readonly id: object[]
     static name: string
 }
 abstract class DeviceClass {
@@ -25158,13 +25085,13 @@ class IndicationLocPositionReportOutput {
      */
     get_altitude_from_sealevel(): [ /* returnType */ boolean, /* value_altitude_from_sealevel */ number | null ]
     /**
-     * Get the 'Dilution of Precision' field from `self`.
+     * Get the 'DOP' field from `self`.
      */
-    get_dilution_of_precision(): [ /* returnType */ boolean, /* value_dilution_of_precision */ IndicationLocPositionReportOutputDilutionOfPrecision | null ]
+    get_dop(): [ /* returnType */ boolean, /* value_dop_pdop */ number | null, /* value_dop_hdop */ number | null, /* value_dop_vdop */ number | null ]
     /**
-     * Get the 'GPS Time' field from `self`.
+     * Get the 'GPS Date Time' field from `self`.
      */
-    get_gps_time(): [ /* returnType */ boolean, /* value_gps_time */ IndicationLocPositionReportOutputGpsTime | null ]
+    get_gps_date_time(): [ /* returnType */ boolean, /* value_gps_date_time_gps_weeks */ number | null, /* value_gps_date_time_gps_time_of_week_milliseconds */ number | null ]
     /**
      * Get the 'Heading' field from `self`.
      */
@@ -25282,34 +25209,6 @@ class IndicationLocPositionReportOutput {
      * If the reference count drops to 0, `self` is completely disposed.
      */
     unref(): void
-    static name: string
-}
-class IndicationLocPositionReportOutputDilutionOfPrecision {
-    /* Fields of Qmi-1.0.Qmi.IndicationLocPositionReportOutputDilutionOfPrecision */
-    /**
-     * a #gfloat.
-     */
-    readonly position_dilution_of_precision: number
-    /**
-     * a #gfloat.
-     */
-    readonly horizontal_dilution_of_precision: number
-    /**
-     * a #gfloat.
-     */
-    readonly vertical_dilution_of_precision: number
-    static name: string
-}
-class IndicationLocPositionReportOutputGpsTime {
-    /* Fields of Qmi-1.0.Qmi.IndicationLocPositionReportOutputGpsTime */
-    /**
-     * a #guint16.
-     */
-    readonly gps_weeks: number
-    /**
-     * a #guint32.
-     */
-    readonly gps_time_of_week_milliseconds: number
     static name: string
 }
 class IndicationLocSetEngineLockOutput {
@@ -26355,6 +26254,7 @@ class IndicationUimRefreshOutputEventFilesElement {
 }
 class IndicationUimSlotStatusOutput {
     /* Methods of Qmi-1.0.Qmi.IndicationUimSlotStatusOutput */
+    get_compat_context(): object | null
     /**
      * Get the 'Physical Slot Information' field from `self`.
      */
@@ -26364,13 +26264,14 @@ class IndicationUimSlotStatusOutput {
      */
     get_physical_slot_status(): [ /* returnType */ boolean, /* value_physical_slot_status */ PhysicalSlotStatusSlot[] | null ]
     /**
-     * Get the 'Slot EID Information' field from `self`.
+     * Get the 'Slot EID' field from `self`.
      */
-    get_slot_eid_information(): [ /* returnType */ boolean, /* value_slot_eid_information */ any[] | null ]
+    get_slot_eid(): [ /* returnType */ boolean, /* value_slot_eid */ SlotEidElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): IndicationUimSlotStatusOutput
+    set_compat_context(compat_context: object | null, compat_context_free: GLib.DestroyNotify): void
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -26784,294 +26685,6 @@ class MessageContext {
     /* Static methods and pseudo-constructors */
     static new(): MessageContext
 }
-class MessageCtlAllocateCidInput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlAllocateCidInput */
-    /**
-     * Get the 'Service' field from `self`.
-     */
-    get_service(): [ /* returnType */ boolean, /* value_service */ Service | null ]
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlAllocateCidInput
-    /**
-     * Set the 'Service' field in the message.
-     */
-    set_service(value_service: Service): boolean
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-    static new(): MessageCtlAllocateCidInput
-    constructor()
-    /* Static methods and pseudo-constructors */
-    static new(): MessageCtlAllocateCidInput
-}
-class MessageCtlAllocateCidOutput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlAllocateCidOutput */
-    /**
-     * Get the 'Allocation Info' field from `self`.
-     */
-    get_allocation_info(): [ /* returnType */ boolean, /* value_allocation_info_service */ Service | null, /* value_allocation_info_cid */ number | null ]
-    /**
-     * Get the result of the QMI operation.
-     */
-    get_result(): boolean
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlAllocateCidOutput
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-}
-class MessageCtlGetVersionInfoOutput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlGetVersionInfoOutput */
-    /**
-     * Get the result of the QMI operation.
-     */
-    get_result(): boolean
-    /**
-     * Get the 'Service list' field from `self`.
-     */
-    get_service_list(): [ /* returnType */ boolean, /* value_service_list */ MessageCtlGetVersionInfoOutputServiceListService[] | null ]
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlGetVersionInfoOutput
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-}
-class MessageCtlGetVersionInfoOutputServiceListService {
-    /* Fields of Qmi-1.0.Qmi.MessageCtlGetVersionInfoOutputServiceListService */
-    /**
-     * a #QmiService.
-     */
-    readonly service: Service
-    /**
-     * a #guint16.
-     */
-    readonly major_version: number
-    /**
-     * a #guint16.
-     */
-    readonly minor_version: number
-    static name: string
-}
-class MessageCtlInternalProxyOpenInput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlInternalProxyOpenInput */
-    /**
-     * Get the 'Device Path' field from `self`.
-     */
-    get_device_path(): [ /* returnType */ boolean, /* value_device_path */ string | null ]
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlInternalProxyOpenInput
-    /**
-     * Set the 'Device Path' field in the message.
-     */
-    set_device_path(value_device_path: string): boolean
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-    static new(): MessageCtlInternalProxyOpenInput
-    constructor()
-    /* Static methods and pseudo-constructors */
-    static new(): MessageCtlInternalProxyOpenInput
-}
-class MessageCtlInternalProxyOpenOutput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlInternalProxyOpenOutput */
-    /**
-     * Get the result of the QMI operation.
-     */
-    get_result(): boolean
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlInternalProxyOpenOutput
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-}
-class MessageCtlReleaseCidInput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlReleaseCidInput */
-    /**
-     * Get the 'Release Info' field from `self`.
-     */
-    get_release_info(): [ /* returnType */ boolean, /* value_release_info_service */ Service | null, /* value_release_info_cid */ number | null ]
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlReleaseCidInput
-    /**
-     * Set the 'Release Info' field in the message.
-     */
-    set_release_info(value_release_info_service: Service, value_release_info_cid: number): boolean
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-    static new(): MessageCtlReleaseCidInput
-    constructor()
-    /* Static methods and pseudo-constructors */
-    static new(): MessageCtlReleaseCidInput
-}
-class MessageCtlReleaseCidOutput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlReleaseCidOutput */
-    /**
-     * Get the 'Release Info' field from `self`.
-     */
-    get_release_info(): [ /* returnType */ boolean, /* value_release_info_service */ Service | null, /* value_release_info_cid */ number | null ]
-    /**
-     * Get the result of the QMI operation.
-     */
-    get_result(): boolean
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlReleaseCidOutput
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-}
-class MessageCtlSetDataFormatInput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlSetDataFormatInput */
-    /**
-     * Get the 'Format' field from `self`.
-     */
-    get_format(): [ /* returnType */ boolean, /* value_format */ CtlDataFormat | null ]
-    /**
-     * Get the 'Protocol' field from `self`.
-     */
-    get_protocol(): [ /* returnType */ boolean, /* value_protocol */ CtlDataLinkProtocol | null ]
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlSetDataFormatInput
-    /**
-     * Set the 'Format' field in the message.
-     */
-    set_format(value_format: CtlDataFormat): boolean
-    /**
-     * Set the 'Protocol' field in the message.
-     */
-    set_protocol(value_protocol: CtlDataLinkProtocol): boolean
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-    static new(): MessageCtlSetDataFormatInput
-    constructor()
-    /* Static methods and pseudo-constructors */
-    static new(): MessageCtlSetDataFormatInput
-}
-class MessageCtlSetDataFormatOutput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlSetDataFormatOutput */
-    /**
-     * Get the 'Protocol' field from `self`.
-     */
-    get_protocol(): [ /* returnType */ boolean, /* value_protocol */ CtlDataLinkProtocol | null ]
-    /**
-     * Get the result of the QMI operation.
-     */
-    get_result(): boolean
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlSetDataFormatOutput
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-}
-class MessageCtlSetInstanceIdInput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlSetInstanceIdInput */
-    /**
-     * Get the 'ID' field from `self`.
-     */
-    get_id(): [ /* returnType */ boolean, /* value_id */ number | null ]
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlSetInstanceIdInput
-    /**
-     * Set the 'ID' field in the message.
-     */
-    set_id(value_id: number): boolean
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-    static new(): MessageCtlSetInstanceIdInput
-    constructor()
-    /* Static methods and pseudo-constructors */
-    static new(): MessageCtlSetInstanceIdInput
-}
-class MessageCtlSetInstanceIdOutput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlSetInstanceIdOutput */
-    /**
-     * Get the 'Link ID' field from `self`.
-     */
-    get_link_id(): [ /* returnType */ boolean, /* value_link_id */ number | null ]
-    /**
-     * Get the result of the QMI operation.
-     */
-    get_result(): boolean
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlSetInstanceIdOutput
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-}
-class MessageCtlSyncOutput {
-    /* Methods of Qmi-1.0.Qmi.MessageCtlSyncOutput */
-    /**
-     * Get the result of the QMI operation.
-     */
-    get_result(): boolean
-    /**
-     * Atomically increments the reference count of `self` by one.
-     */
-    ref(): MessageCtlSyncOutput
-    /**
-     * Atomically decrements the reference count of `self` by one.
-     * If the reference count drops to 0, `self` is completely disposed.
-     */
-    unref(): void
-    static name: string
-}
 class MessageDmsActivateAutomaticInput {
     /* Methods of Qmi-1.0.Qmi.MessageDmsActivateAutomaticInput */
     /**
@@ -27183,17 +26796,17 @@ class MessageDmsActivateManualOutput {
 class MessageDmsDeleteStoredImageInput {
     /* Methods of Qmi-1.0.Qmi.MessageDmsDeleteStoredImageInput */
     /**
-     * Get the 'Image' field from `self`.
+     * Get the 'Image Details' field from `self`.
      */
-    get_image(): [ /* returnType */ boolean, /* value_image */ MessageDmsDeleteStoredImageInputImage | null ]
+    get_image_details(): [ /* returnType */ boolean, /* value_image_details_type */ DmsFirmwareImageType | null, /* value_image_details_unique_id */ Uint8Array | null, /* value_image_details_build_id */ string | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageDmsDeleteStoredImageInput
     /**
-     * Set the 'Image' field in the message.
+     * Set the 'Image Details' field in the message.
      */
-    set_image(value_image: MessageDmsDeleteStoredImageInputImage): boolean
+    set_image_details(value_image_details_type: DmsFirmwareImageType, value_image_details_unique_id: Uint8Array, value_image_details_build_id: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -27204,22 +26817,6 @@ class MessageDmsDeleteStoredImageInput {
     constructor()
     /* Static methods and pseudo-constructors */
     static new(): MessageDmsDeleteStoredImageInput
-}
-class MessageDmsDeleteStoredImageInputImage {
-    /* Fields of Qmi-1.0.Qmi.MessageDmsDeleteStoredImageInputImage */
-    /**
-     * a #QmiDmsFirmwareImageType.
-     */
-    readonly type: DmsFirmwareImageType
-    /**
-     * a #GArray of #guint8 elements.
-     */
-    readonly unique_id: object[]
-    /**
-     * a string.
-     */
-    readonly build_id: string
-    static name: string
 }
 class MessageDmsDeleteStoredImageOutput {
     /* Methods of Qmi-1.0.Qmi.MessageDmsDeleteStoredImageOutput */
@@ -27826,17 +27423,17 @@ class MessageDmsGetSoftwareVersionOutput {
 class MessageDmsGetStoredImageInfoInput {
     /* Methods of Qmi-1.0.Qmi.MessageDmsGetStoredImageInfoInput */
     /**
-     * Get the 'Image' field from `self`.
+     * Get the 'Image Details' field from `self`.
      */
-    get_image(): [ /* returnType */ boolean, /* value_image */ MessageDmsGetStoredImageInfoInputImage | null ]
+    get_image_details(): [ /* returnType */ boolean, /* value_image_details_type */ DmsFirmwareImageType | null, /* value_image_details_unique_id */ Uint8Array | null, /* value_image_details_build_id */ string | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageDmsGetStoredImageInfoInput
     /**
-     * Set the 'Image' field in the message.
+     * Set the 'Image Details' field in the message.
      */
-    set_image(value_image: MessageDmsGetStoredImageInfoInputImage): boolean
+    set_image_details(value_image_details_type: DmsFirmwareImageType, value_image_details_unique_id: Uint8Array, value_image_details_build_id: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -27847,22 +27444,6 @@ class MessageDmsGetStoredImageInfoInput {
     constructor()
     /* Static methods and pseudo-constructors */
     static new(): MessageDmsGetStoredImageInfoInput
-}
-class MessageDmsGetStoredImageInfoInputImage {
-    /* Fields of Qmi-1.0.Qmi.MessageDmsGetStoredImageInfoInputImage */
-    /**
-     * a #QmiDmsFirmwareImageType.
-     */
-    readonly type: DmsFirmwareImageType
-    /**
-     * a #GArray of #guint8 elements.
-     */
-    readonly unique_id: object[]
-    /**
-     * a string.
-     */
-    readonly build_id: string
-    static name: string
 }
 class MessageDmsGetStoredImageInfoOutput {
     /* Methods of Qmi-1.0.Qmi.MessageDmsGetStoredImageInfoOutput */
@@ -29522,6 +29103,52 @@ class MessageDsdSetApnTypeOutput {
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageDsdSetApnTypeOutput
+    /**
+     * Atomically decrements the reference count of `self` by one.
+     * If the reference count drops to 0, `self` is completely disposed.
+     */
+    unref(): void
+    static name: string
+}
+class MessageFoxGetFirmwareVersionInput {
+    /* Methods of Qmi-1.0.Qmi.MessageFoxGetFirmwareVersionInput */
+    /**
+     * Get the 'Version Type' field from `self`.
+     */
+    get_version_type(): [ /* returnType */ boolean, /* value_version_type */ FoxFirmwareVersionType | null ]
+    /**
+     * Atomically increments the reference count of `self` by one.
+     */
+    ref(): MessageFoxGetFirmwareVersionInput
+    /**
+     * Set the 'Version Type' field in the message.
+     */
+    set_version_type(value_version_type: FoxFirmwareVersionType): boolean
+    /**
+     * Atomically decrements the reference count of `self` by one.
+     * If the reference count drops to 0, `self` is completely disposed.
+     */
+    unref(): void
+    static name: string
+    static new(): MessageFoxGetFirmwareVersionInput
+    constructor()
+    /* Static methods and pseudo-constructors */
+    static new(): MessageFoxGetFirmwareVersionInput
+}
+class MessageFoxGetFirmwareVersionOutput {
+    /* Methods of Qmi-1.0.Qmi.MessageFoxGetFirmwareVersionOutput */
+    /**
+     * Get the result of the QMI operation.
+     */
+    get_result(): boolean
+    /**
+     * Get the 'Version' field from `self`.
+     */
+    get_version(): [ /* returnType */ boolean, /* value_version */ string | null ]
+    /**
+     * Atomically increments the reference count of `self` by one.
+     */
+    ref(): MessageFoxGetFirmwareVersionOutput
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -33770,17 +33397,17 @@ class MessagePdcActivateConfigOutput {
 class MessagePdcConfigChangeInput {
     /* Methods of Qmi-1.0.Qmi.MessagePdcConfigChangeInput */
     /**
-     * Get the 'Type With Id' field from `self`.
+     * Get the 'Type With Id v2' field from `self`.
      */
-    get_type_with_id(): [ /* returnType */ boolean, /* value_type_with_id */ ConfigTypeAndId | null ]
+    get_type_with_id_v2(): [ /* returnType */ boolean, /* value_type_with_id_v2_config_type */ PdcConfigurationType | null, /* value_type_with_id_v2_id */ Uint8Array | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessagePdcConfigChangeInput
     /**
-     * Set the 'Type With Id' field in the message.
+     * Set the 'Type With Id v2' field in the message.
      */
-    set_type_with_id(value_type_with_id: ConfigTypeAndId): boolean
+    set_type_with_id_v2(value_type_with_id_v2_config_type: PdcConfigurationType, value_type_with_id_v2_id: Uint8Array): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -33799,9 +33426,9 @@ class MessagePdcConfigChangeOutput {
      */
     get_result(): boolean
     /**
-     * Get the 'Type With Id' field from `self`.
+     * Get the 'Type With Id v2' field from `self`.
      */
-    get_type_with_id(): [ /* returnType */ boolean, /* value_type_with_id */ ConfigTypeAndId | null ]
+    get_type_with_id_v2(): [ /* returnType */ boolean, /* value_type_with_id_v2_config_type */ PdcConfigurationType | null, /* value_type_with_id_v2_id */ Uint8Array | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -33936,9 +33563,9 @@ class MessagePdcGetConfigInfoInput {
      */
     get_token(): [ /* returnType */ boolean, /* value_token */ number | null ]
     /**
-     * Get the 'Type With Id' field from `self`.
+     * Get the 'Type With Id v2' field from `self`.
      */
-    get_type_with_id(): [ /* returnType */ boolean, /* value_type_with_id */ ConfigTypeAndId | null ]
+    get_type_with_id_v2(): [ /* returnType */ boolean, /* value_type_with_id_v2_config_type */ PdcConfigurationType | null, /* value_type_with_id_v2_id */ Uint8Array | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -33948,9 +33575,9 @@ class MessagePdcGetConfigInfoInput {
      */
     set_token(value_token: number): boolean
     /**
-     * Set the 'Type With Id' field in the message.
+     * Set the 'Type With Id v2' field in the message.
      */
-    set_type_with_id(value_type_with_id: ConfigTypeAndId): boolean
+    set_type_with_id_v2(value_type_with_id_v2_config_type: PdcConfigurationType, value_type_with_id_v2_id: Uint8Array): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -34339,9 +33966,9 @@ class MessagePdcSetSelectedConfigInput {
      */
     get_token(): [ /* returnType */ boolean, /* value_token */ number | null ]
     /**
-     * Get the 'Type With Id' field from `self`.
+     * Get the 'Type With Id v2' field from `self`.
      */
-    get_type_with_id(): [ /* returnType */ boolean, /* value_type_with_id */ ConfigTypeAndId | null ]
+    get_type_with_id_v2(): [ /* returnType */ boolean, /* value_type_with_id_v2_config_type */ PdcConfigurationType | null, /* value_type_with_id_v2_id */ Uint8Array | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
@@ -34351,9 +33978,9 @@ class MessagePdcSetSelectedConfigInput {
      */
     set_token(value_token: number): boolean
     /**
-     * Set the 'Type With Id' field in the message.
+     * Set the 'Type With Id v2' field in the message.
      */
-    set_type_with_id(value_type_with_id: ConfigTypeAndId): boolean
+    set_type_with_id_v2(value_type_with_id_v2_config_type: PdcConfigurationType, value_type_with_id_v2_id: Uint8Array): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -35429,6 +35056,7 @@ class MessageUimGetConfigurationOutput {
      * Get the 'Automatic Selection' field from `self`.
      */
     get_automatic_selection(): [ /* returnType */ boolean, /* value_automatic_selection */ boolean | null ]
+    get_compat_context(): object | null
     /**
      * Get the 'Halt Subscription' field from `self`.
      */
@@ -35438,9 +35066,9 @@ class MessageUimGetConfigurationOutput {
      */
     get_personalization_status(): [ /* returnType */ boolean, /* value_personalization_status */ MessageUimGetConfigurationOutputPersonalizationStatusElement[] | null ]
     /**
-     * Get the 'Personalization Status Other Slots' field from `self`.
+     * Get the 'Personalization Status Other' field from `self`.
      */
-    get_personalization_status_other_slots(): [ /* returnType */ boolean, /* value_personalization_status_other_slots */ any[] | null ]
+    get_personalization_status_other(): [ /* returnType */ boolean, /* value_personalization_status_other */ MessageUimGetConfigurationOutputPersonalizationStatusOtherElement[] | null ]
     /**
      * Get the result of the QMI operation.
      */
@@ -35449,6 +35077,7 @@ class MessageUimGetConfigurationOutput {
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageUimGetConfigurationOutput
+    set_compat_context(compat_context: object | null, compat_context_free: GLib.DestroyNotify): void
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -35472,8 +35101,16 @@ class MessageUimGetConfigurationOutputPersonalizationStatusElement {
     readonly unblock_left: number
     static name: string
 }
-class MessageUimGetConfigurationOutputPersonalizationStatusOtherSlotsSlotsElement {
-    /* Fields of Qmi-1.0.Qmi.MessageUimGetConfigurationOutputPersonalizationStatusOtherSlotsSlotsElement */
+class MessageUimGetConfigurationOutputPersonalizationStatusOtherElement {
+    /* Fields of Qmi-1.0.Qmi.MessageUimGetConfigurationOutputPersonalizationStatusOtherElement */
+    /**
+     * a #GArray of #QmiMessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement elements.
+     */
+    readonly slot: object[]
+    static name: string
+}
+class MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement {
+    /* Fields of Qmi-1.0.Qmi.MessageUimGetConfigurationOutputPersonalizationStatusOtherElementSlotElement */
     /**
      * a #QmiUimCardApplicationPersonalizationFeature.
      */
@@ -35560,6 +35197,7 @@ class MessageUimGetFileAttributesOutput {
 }
 class MessageUimGetSlotStatusOutput {
     /* Methods of Qmi-1.0.Qmi.MessageUimGetSlotStatusOutput */
+    get_compat_context(): object | null
     /**
      * Get the 'Physical Slot Information' field from `self`.
      */
@@ -35573,13 +35211,14 @@ class MessageUimGetSlotStatusOutput {
      */
     get_result(): boolean
     /**
-     * Get the 'Slot EID Information' field from `self`.
+     * Get the 'Slot EID' field from `self`.
      */
-    get_slot_eid_information(): [ /* returnType */ boolean, /* value_slot_eid_information */ any[] | null ]
+    get_slot_eid(): [ /* returnType */ boolean, /* value_slot_eid */ SlotEidElement[] | null ]
     /**
      * Atomically increments the reference count of `self` by one.
      */
     ref(): MessageUimGetSlotStatusOutput
+    set_compat_context(compat_context: object | null, compat_context_free: GLib.DestroyNotify): void
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -40662,6 +40301,14 @@ abstract class ProxyClass {
     static name: string
 }
 class ProxyPrivate {
+    static name: string
+}
+class SlotEidElement {
+    /* Fields of Qmi-1.0.Qmi.SlotEidElement */
+    /**
+     * a #GArray of #guint8 elements.
+     */
+    readonly eid: object[]
     static name: string
 }
     type Message = Uint8Array
