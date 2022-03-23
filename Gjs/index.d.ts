@@ -712,6 +712,9 @@ import type * as Gjs from "./Gjs";
       import type JavaScriptCore40 from "./JavaScriptCore-4.0";
     
   
+      import type JavaScriptCore41 from "./JavaScriptCore-4.1";
+    
+  
       import type JavaScriptCore50 from "./JavaScriptCore-5.0";
     
   
@@ -1018,10 +1021,16 @@ import type * as Gjs from "./Gjs";
       import type WebKit240 from "./WebKit2-4.0";
     
   
+      import type WebKit241 from "./WebKit2-4.1";
+    
+  
       import type WebKit250 from "./WebKit2-5.0";
     
   
       import type WebKit2WebExtension40 from "./WebKit2WebExtension-4.0";
+    
+  
+      import type WebKit2WebExtension41 from "./WebKit2WebExtension-4.1";
     
   
       import type WebKit2WebExtension50 from "./WebKit2WebExtension-5.0";
@@ -1395,6 +1404,8 @@ declare global {
             JSCore:              typeof JSCore30
             JavaScriptCore:              typeof JavaScriptCore40
                 |
+              typeof JavaScriptCore41
+                |
               typeof JavaScriptCore50
             Json:              typeof Json10
             Jsonrpc:              typeof Jsonrpc10
@@ -1512,8 +1523,12 @@ declare global {
             Vulkan:              typeof Vulkan10
             WebKit2:              typeof WebKit240
                 |
+              typeof WebKit241
+                |
               typeof WebKit250
             WebKit2WebExtension:              typeof WebKit2WebExtension40
+                |
+              typeof WebKit2WebExtension41
                 |
               typeof WebKit2WebExtension50
             Wnck:              typeof Wnck30
@@ -1824,6 +1839,8 @@ declare global {
             JSCore:              '3.0'
             JavaScriptCore:              '4.0'
                 |
+              '4.1'
+                |
               '5.0'
             Json:              '1.0'
             Jsonrpc:              '1.0'
@@ -1941,8 +1958,12 @@ declare global {
             Vulkan:              '1.0'
             WebKit2:              '4.0'
                 |
+              '4.1'
+                |
               '5.0'
             WebKit2WebExtension:              '4.0'
+                |
+              '4.1'
                 |
               '5.0'
             Wnck:              '3.0'

@@ -713,6 +713,9 @@ import type JSCore30 from "./JSCore-3.0";
 import type JavaScriptCore40 from "./JavaScriptCore-4.0";
         
         
+import type JavaScriptCore41 from "./JavaScriptCore-4.1";
+        
+        
 import type JavaScriptCore50 from "./JavaScriptCore-5.0";
         
         
@@ -1019,10 +1022,16 @@ import type Vulkan10 from "./Vulkan-1.0";
 import type WebKit240 from "./WebKit2-4.0";
         
         
+import type WebKit241 from "./WebKit2-4.1";
+        
+        
 import type WebKit250 from "./WebKit2-5.0";
         
         
 import type WebKit2WebExtension40 from "./WebKit2WebExtension-4.0";
+        
+        
+import type WebKit2WebExtension41 from "./WebKit2WebExtension-4.1";
         
         
 import type WebKit2WebExtension50 from "./WebKit2WebExtension-5.0";
@@ -1336,6 +1345,7 @@ import type SocialWebClient025 from "./SocialWebClient-0.25";
     export function require(ns: 'Ide', ver: '1.0'): typeof Ide10;
     export function require(ns: 'JSCore', ver: '3.0'): typeof JSCore30;
     export function require(ns: 'JavaScriptCore', ver: '4.0'): typeof JavaScriptCore40;
+    export function require(ns: 'JavaScriptCore', ver: '4.1'): typeof JavaScriptCore41;
     export function require(ns: 'JavaScriptCore', ver: '5.0'): typeof JavaScriptCore50;
     export function require(ns: 'Json', ver: '1.0'): typeof Json10;
     export function require(ns: 'Jsonrpc', ver: '1.0'): typeof Jsonrpc10;
@@ -1438,8 +1448,10 @@ import type SocialWebClient025 from "./SocialWebClient-0.25";
     export function require(ns: 'Vte', ver: '2.91'): typeof Vte291;
     export function require(ns: 'Vulkan', ver: '1.0'): typeof Vulkan10;
     export function require(ns: 'WebKit2', ver: '4.0'): typeof WebKit240;
+    export function require(ns: 'WebKit2', ver: '4.1'): typeof WebKit241;
     export function require(ns: 'WebKit2', ver: '5.0'): typeof WebKit250;
     export function require(ns: 'WebKit2WebExtension', ver: '4.0'): typeof WebKit2WebExtension40;
+    export function require(ns: 'WebKit2WebExtension', ver: '4.1'): typeof WebKit2WebExtension41;
     export function require(ns: 'WebKit2WebExtension', ver: '5.0'): typeof WebKit2WebExtension50;
     export function require(ns: 'Wnck', ver: '3.0'): typeof Wnck30;
     export function require(ns: 'Xdp', ver: '1.0'): typeof Xdp10;
